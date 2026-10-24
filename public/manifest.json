@@ -1,0 +1,10 @@
+{
+  "name": "冷凍庫在庫",
+  "short_name": "冷凍庫在庫",
+  "description": "仕込んだお菓子の冷凍在庫を仕込み日ごとに管理する",
+  "start_url": "/aboutus-freezer-stock/",
+  "display": "standalone",
+  "background_color": "#F4F7F8",
+  "theme_color": "#F4F7F8",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

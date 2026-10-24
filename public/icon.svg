@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#3E6A80"/>
+  <g fill="none" stroke="#F4F7F8" stroke-width="22" stroke-linecap="round">
+    <path d="M256 150v212M164 203l184 106M164 309l184-106"/>
+    <path d="M226 162l30 24 30-24M226 350l30-24 30 24"/>
+  </g>
+  <text x="256" y="452" text-anchor="middle" font-family="Copperplate, 'Hiragino Sans', sans-serif" font-size="56" letter-spacing="6" fill="#F4F7F8">STOCK</text>
+</svg>
