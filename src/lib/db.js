@@ -10,12 +10,10 @@ export async function fetchAll() {
   return { items: items.data, lots: lots.data };
 }
 
+// id は端末側で発行する。送り直しても二重登録にならないよう upsert にしている
 export async function saveItem(item) {
-  const row = { name: item.name, shelf_life_days: item.shelf_life_days, sort_order: item.sort_order ?? 0 };
-  const q = item.id
-    ? supabase.from('fs_items').update(row).eq('id', item.id)
-    : supabase.from('fs_items').insert(row);
-  const { error } = await q;
+  const row = { id: item.id, name: item.name, shelf_life_days: item.shelf_life_days, sort_order: item.sort_order ?? 0 };
+  const { error } = await supabase.from('fs_items').upsert(row);
   if (error) throw error;
 }
 
@@ -24,8 +22,10 @@ export async function deleteItem(id) {
   if (error) throw error;
 }
 
-export async function addLot({ item_id, made_on, expires_on, quantity }) {
-  const { error } = await supabase.from('fs_lots').insert({ item_id, made_on, expires_on, quantity });
+export async function addLot({ id, item_id, made_on, expires_on, quantity }) {
+  const { error } = await supabase
+    .from('fs_lots')
+    .upsert({ id, item_id, made_on, expires_on, quantity }, { onConflict: 'id', ignoreDuplicates: true });
   if (error) throw error;
 }
 
